@@ -1,0 +1,18 @@
+version:  '3'
+
+services:
+
+  db:
+    build:  ./database
+    container_name: finalsdb
+
+
+  php:
+    build:  ./php
+    container_name: finalsphp
+    volumes:
+      - ./src:/var/www/html
+    ports:
+      - '8000:80'
+    depends_on:
+      - db
